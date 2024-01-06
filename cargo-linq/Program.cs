@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using cargolinq.Data;
+using cargolinq.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<TruckDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("TruckDbContext") ?? throw new InvalidOperationException("Connection string 'CargoLinqDbContext' not found.")));
 
 var app = builder.Build();
 
