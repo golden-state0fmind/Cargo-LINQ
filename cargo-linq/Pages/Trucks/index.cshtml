@@ -1,0 +1,63 @@
+@page
+@model cargolinq.Pages.Trucks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Add Freight Truck to Inventory</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form>
+    <p>
+        <select asp-for="TruckModel" asp-items="Model.TruckModels">
+            <option value="">All</option>
+        </select>
+        Model: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Truck[0].DriverName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Truck[0].LicensePlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Truck[0].TruckModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Truck[0].TruckMileage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Truck) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicensePlate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckMileage)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
