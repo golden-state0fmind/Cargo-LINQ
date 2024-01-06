@@ -30,6 +30,14 @@ namespace cargo_linq.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TruckMileage")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TruckModel")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Truck");
