@@ -29,7 +29,7 @@ namespace cargolinq.Pages.Trucks
         public string? TruckModel { get; set; }
         public async Task OnGetAsync()
         {
-            // Use LINQ to get list of genres.
+            // Use LINQ to get list of trucks.
             IQueryable<string> modelQuery = from m in _context.Truck
                                             orderby m.TruckModel
                                             select m.TruckModel;
