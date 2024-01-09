@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cargo-linq")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d07a63be0d0abe82f61d5c2428dbb2f5840e159b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5ebc0068682bfe375a9fb25f312d0fe67953f63")]
 [assembly: System.Reflection.AssemblyProductAttribute("cargo-linq")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cargo-linq")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
