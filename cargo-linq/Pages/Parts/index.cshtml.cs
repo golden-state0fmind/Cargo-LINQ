@@ -19,10 +19,37 @@ namespace cargolinq.Pages.Parts
         {
             _context = context;
         }
+        public IList<TruckParts> TruckParts { get; set; } = default!;
 
-        public IList<TruckParts> Part { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
-        public SelectList? TruckParts { get; set; }
+        public SelectList? TruckPartsModels { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string? TruckPartsModel { get; set; }
+        public async Task OnGetAsync()
+        {
+            // Using LINQ to query a list of truck parts.
+            IQueryable<string> truckPartsQuery = from p in _context.TruckParts
+                                                 orderby p.PartName
+                                                 select p.PartName;
+
+            var parts = from p in _context.TruckParts
+                        select p;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                parts = parts.Where(p => p.PartName.Contains(SearchString));
+            }
+
+            if (!string.IsNullOrEmpty(TruckPartsModel))
+            {
+                parts = parts.Where(p => p.PartName == TruckPartsModel);
+            }
+
+            TruckPartsModels = new SelectList(await truckPartsQuery.Distinct().ToListAsync());
+            TruckParts = await parts.ToListAsync();
+        }
     }
 }
+
