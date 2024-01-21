@@ -11,12 +11,56 @@
     <a asp-page="Create">Add New Part To Inventory</a>
 </p>
 <form>
-    
+    <p>
+        <select asp-for="TruckPartsModel" asp-item="Model.TruckPartsModels" >
+            <option value="">All</option>
+        </select>
+        Model: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
 </form>
 <table class="table">
     <thead>
         <tr>
-            
+            <th>
+                @Html.DisplayNameFor(model => model.TruckParts[0].PartName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckParts[0].PartNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckParts[0].PartPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckParts[0].PartQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckParts[0].Supplier)
+            </th>
         </tr>
     </thead>
+    <tbody>
+        @foreach(var part in Model.TruckParts) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelTruckParts => part.PartName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelTruckParts => part.PartNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelTruckParts => part.PartPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelTruckParts => part.PartQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelTruckParts => part.Supplier)
+                </td>
+                    <a asp-page="./Edit" asp-route-id="@part.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@part.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@part.Id">Delete</a>
+            </tr>
+        }
+    </tbody>
 </table>
