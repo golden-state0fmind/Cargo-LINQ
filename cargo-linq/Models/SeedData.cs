@@ -62,35 +62,61 @@ namespace cargolinq.Models
                     return;   // DB has been seeded
                 }
 
-                var supplier = new Supplier
+                var suppliers = new List<Supplier>
                 {
-                    SupplierName = "Supplier1",
-                    SupplierEmail = "supplier1@example.com",
-                    SupplierPhone = "123-456-7890"
-                };
-
-                context.Suppliers.Add(supplier);
-
-                context.TruckParts.AddRange(
-                    new TruckParts
+                    new Supplier
                     {
-                        PartNumber = "P001",
-                        PartName = "Engine",
-                        PartQuantity = 10,
-                        PartPrice = 500.00,
-                        Supplier = supplier
+                        SupplierId = 1,
+                        SupplierName = "Supplier1",
+                        SupplierEmail = "supplier1@example.com",
+                        SupplierPhone = "123-456-7890",
+                        SuppliedParts = new List<TruckParts>
+                        {
+                            new TruckParts
+                            {
+                                PartNumber = "P001",
+                                PartName = "Engine",
+                                PartQuantity = 10,
+                                PartPrice = 1500.00
+                            },
+                            new TruckParts
+                            {
+                                PartNumber = "P002",
+                                PartName = "Transmission",
+                                PartQuantity = 5,
+                                PartPrice = 1200.00
+                            }
+                            // Add more parts if needed
+                        }
                     },
-
-                    new TruckParts
+                    new Supplier
                     {
-                        PartNumber = "P002",
-                        PartName = "Transmission",
-                        PartQuantity = 8,
-                        PartPrice = 300.00,
-                        Supplier = supplier
-                    }
-                    // Add more TruckParts as needed...
-                );
+                        SupplierId = 2,
+                        SupplierName = "Supplier2",
+                        SupplierEmail = "supplier2@example.com",
+                        SupplierPhone = "123-456-0000",
+                        SuppliedParts = new List<TruckParts>
+                        {
+                            new TruckParts
+                            {
+                                PartNumber = "P003",
+                                PartName = "Tires",
+                                PartQuantity = 100,
+                                PartPrice = 500.00
+                            },
+                            new TruckParts
+                            {
+                                PartNumber = "P004",
+                                PartName = "WindshieldWipers",
+                                PartQuantity = 1000,
+                                PartPrice = 37.95
+                            }
+                            // Add more parts if needed
+                        }
+                    },
+                    // Add more suppliers if needed
+                };
+                context.Suppliers.AddRange(suppliers);
                 context.SaveChanges();
             }
         }
