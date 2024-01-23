@@ -18,7 +18,7 @@ namespace cargo_linq.Migrations
 
             modelBuilder.Entity("cargolinq.Models.Supplier", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SupplierId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -34,7 +34,7 @@ namespace cargo_linq.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("SupplierId");
 
                     b.ToTable("Suppliers");
                 });
@@ -68,7 +68,7 @@ namespace cargo_linq.Migrations
 
             modelBuilder.Entity("cargolinq.Models.TruckParts", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TruckPartId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -89,7 +89,7 @@ namespace cargo_linq.Migrations
                     b.Property<int>("SupplierId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("TruckPartId");
 
                     b.HasIndex("SupplierId");
 
