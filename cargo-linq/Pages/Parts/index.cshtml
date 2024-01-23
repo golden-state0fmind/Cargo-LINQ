@@ -34,9 +34,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TruckParts[0].PartQuantity)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TruckParts[0].Supplier)
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -55,11 +53,10 @@
                     @Html.DisplayFor(modelTruckParts => part.PartQuantity)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelTruckParts => part.Supplier)
+                    <a asp-page="./Edit" asp-route-id="@part.TruckPartId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@part.TruckPartId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@part.TruckPartId">Delete</a>
                 </td>
-                    <a asp-page="./Edit" asp-route-id="@part.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@part.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@part.Id">Delete</a>
             </tr>
         }
     </tbody>
