@@ -1,0 +1,54 @@
+@page
+@model cargolinq.Pages.Parts.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Add Part</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Part.PartNumber" class="control-label"></label>
+                <input asp-for="Part.PartNumber" class="form-control" />
+                <span asp-validation-for="Part.PartNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Part.PartName" class="control-label"></label>
+                <input asp-for="Part.PartName" class="form-control" />
+                <span asp-validation-for="Part.PartName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Part.PartPrice" class="control-label"></label>
+                <input asp-for="Part.PartPrice" class="form-control" />
+                <span asp-validation-for="Part.PartPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Part.PartQuantity" class="control-label"></label>
+                <input asp-for="Part.PartQuantity" class="form-control" />
+                <span asp-validation-for="Part.PartQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Part.SupplierId" class="control-label"></label>
+                <input asp-for="Part.SupplierId" class="form-control" />
+                <span asp-validation-for="Part.SupplierId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Parts/index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
